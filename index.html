@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>骆芷蝶智选 - 服装供应链 ToB 服务平台</title>
+    <meta name="description" content="买手店首选的一站式服装供应链服务平台，严选供应商 + 专业选品指导 + 低门槛启动">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* 导航栏 */
+        .navbar {
+            background: #fff;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #e91e63;
+        }
+        
+        .nav-links a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: #e91e63;
+        }
+        
+        .btn-primary {
+            background: #e91e63;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            background: #c2185b;
+        }
+        
+        /* 首屏 */
+        .hero {
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
+            padding: 150px 5% 100px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            color: #555;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #e91e63;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid #e91e63;
+            display: inline-block;
+        }
+        
+        /* 核心价值 */
+        .features {
+            padding: 80px 5%;
+            background: #fff;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+            background: #fafafa;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        
+        /* 服务介绍 */
+        .services {
+            padding: 80px 5%;
+            background: #fce4ec;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .service-card h3 {
+            color: #e91e63;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .service-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .service-card li:before {
+            content: "✓";
+            color: #e91e63;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        /* 课程推荐 */
+        .courses {
+            padding: 80px 5%;
+            background: #fff;
+        }
+        
+        .course-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #e91e63 0%, #f06292 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .course-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .course-card .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 1.5rem 0;
+        }
+        
+        .course-card .price small {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* 供应商入驻 */
+        .supplier {
+            padding: 80px 5%;
+            background: #fafafa;
+        }
+        
+        .supplier-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        /* 关于我们 */
+        .about {
+            padding: 80px 5%;
+            background: #fff;
+            text-align: center;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* 页脚 */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+        
+        .footer-links {
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: #e91e63;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">骆芷蝶智选</div>
+        <div class="nav-links">
+            <a href="#features">核心优势</a>
+            <a href="#services">服务项目</a>
+            <a href="#courses">选品课程</a>
+            <a href="#supplier">供应商入驻</a>
+            <a href="#about">关于我们</a>
+        </div>
+        <a href="#contact" class="btn-primary">立即咨询</a>
+    </nav>
+
+    <!-- 首屏 -->
+    <section class="hero">
+        <h1>让服装生意更容易</h1>
+        <p>骆芷蝶智选——买手店首选的一站式服装供应链服务平台</p>
+        <p style="font-size: 1.1rem; color: #666; margin-top: -1rem;">严选供应商 · 专业选品指导 · 低门槛启动</p>
+        <div class="hero-buttons">
+            <a href="#supplier" class="btn-primary">免费获取供应商名录</a>
+            <a href="#courses" class="btn-secondary">学习选品课程</a>
+        </div>
+    </section>
+
+    <!-- 核心价值 -->
+    <section id="features" class="features">
+        <h2 class="section-title">为什么选择骆芷蝶智选？</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>严选供应商</h3>
+                <p>每一家供应商都经过严格审核，确保品质可靠、交期稳定、服务专业</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h3>专业选品指导</h3>
+                <p>7 天入门课程 + 实战手册，帮你快速掌握选品核心逻辑，避免踩坑</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>低门槛启动</h3>
+                <p>1000 元即可启动，无需大量囤货，灵活选品，降低创业风险</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h3>一对一服务</h3>
+                <p>专属客服全程跟进，从选品到拿货，有任何问题随时解答</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📦</div>
+                <h3>品类齐全</h3>
+                <p>覆盖女装、男装、童装、配饰等全品类，满足不同买手店需求</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>快速上手</h3>
+                <p>简单 3 步：注册 → 选品 → 拿货，最快 24 小时完成首单交易</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务项目 -->
+    <section id="services" class="services">
+        <h2 class="section-title">我们的服务</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>🏭 供应链服务</h3>
+                <ul>
+                    <li>严选供应商资源对接</li>
+                    <li>一件代发/小批量拿货</li>
+                    <li>品质把控与验货服务</li>
+                    <li>物流配送支持</li>
+                    <li>售后问题协调处理</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3>📖 知识付费</h3>
+                <ul>
+                    <li>《服装选品入门 7 天课》</li>
+                    <li>《供应商谈判实战手册》</li>
+                    <li>《库存管理避坑指南》</li>
+                    <li>1 对 1 选品咨询服务</li>
+                    <li>定期行业分享会</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3>💼 创业扶持</h3>
+                <ul>
+                    <li>买手店开店指导</li>
+                    <li>品牌定位咨询</li>
+                    <li>营销方案策划</li>
+                    <li>社群资源对接</li>
+                    <li>持续运营支持</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 课程推荐 -->
+    <section id="courses" class="courses">
+        <h2 class="section-title">热门课程</h2>
+        <div class="course-card">
+            <h3>🎓 服装选品入门 7 天课</h3>
+            <p>零基础也能学会的选品实战课程，7 天掌握核心技能</p>
+            <div class="price">
+                <small>首发特惠</small>
+                <br>
+                ¥99 <small style="font-size: 1rem; text-decoration: line-through; opacity: 0.7;">原价¥299</small>
+            </div>
+            <div style="text-align: left; margin: 2rem 0;">
+                <p><strong>课程大纲：</strong></p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>Day 1：认识服装供应链</li>
+                    <li>Day 2：如何找到靠谱供应商</li>
+                    <li>Day 3：选品核心逻辑</li>
+                    <li>Day 4：拿货谈判技巧</li>
+                    <li>Day 5：库存管理方法</li>
+                    <li>Day 6：品质把控流程</li>
+                    <li>Day 7：实战演练</li>
+                </ul>
+            </div>
+            <a href="#contact" class="btn-secondary" style="background: white; color: #e91e63;">立即报名</a>
+        </div>
+    </section>
+
+    <!-- 供应商入驻 -->
+    <section id="supplier" class="supplier">
+        <h2 class="section-title">供应商入驻申请</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: #666;">
+            优质供应商免费入驻，共享 50 万 + 买手店客户资源
+        </p>
+        <div class="supplier-form">
+            <form id="supplierForm" onsubmit="return submitForm(event)">
+                <div class="form-group">
+                    <label for="companyName">公司/品牌名称 *</label>
+                    <input type="text" id="companyName" name="companyName" required placeholder="请输入公司或品牌名称">
+                </div>
+                <div class="form-group">
+                    <label for="contactName">联系人 *</label>
+                    <input type="text" id="contactName" name="contactName" required placeholder="请输入联系人姓名">
+                </div>
+                <div class="form-group">
+                    <label for="phone">联系电话 *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="请输入手机号码">
+                </div>
+                <div class="form-group">
+                    <label for="wechat">微信号</label>
+                    <input type="text" id="wechat" name="wechat" placeholder="请输入微信号">
+                </div>
+                <div class="form-group">
+                    <label for="category">主营品类 *</label>
+                    <select id="category" name="category" required>
+                        <option value="">请选择主营品类</option>
+                        <option value="女装">女装</option>
+                        <option value="男装">男装</option>
+                        <option value="童装">童装</option>
+                        <option value="配饰">配饰</option>
+                        <option value="鞋包">鞋包</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="priceRange">价格带 *</label>
+                    <select id="priceRange" name="priceRange" required>
+                        <option value="">请选择价格带</option>
+                        <option value="低端">低端（50 元以下）</option>
+                        <option value="中低端">中低端（50-150 元）</option>
+                        <option value="中端">中端（150-300 元）</option>
+                        <option value="中高端">中高端（300-500 元）</option>
+                        <option value="高端">高端（500 元以上）</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="moq">起订量（件）</label>
+                    <input type="number" id="moq" name="moq" placeholder="请输入最低起订量">
+                </div>
+                <div class="form-group">
+                    <label for="delivery">交货周期（天）</label>
+                    <input type="number" id="delivery" name="delivery" placeholder="请输入平均交货天数">
+                </div>
+                <div class="form-group">
+                    <label for="description">供应能力说明</label>
+                    <textarea id="description" name="description" placeholder="请简要描述您的供应能力、优势等"></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer;">提交申请</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="about">
+        <h2 class="section-title">关于我们</h2>
+        <div class="about-content">
+            <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                骆芷蝶智选是一家专注于服装供应链服务的 ToB 平台，致力于让服装生意更容易。
+            </p>
+            <p style="color: #666; margin-bottom: 1.5rem;">
+                我们通过严选供应商、专业选品指导、低门槛启动三大核心服务，帮助买手店、服装零售商、电商卖家解决找货难、选品难、启动难的痛点。
+            </p>
+            <p style="color: #666;">
+                <strong>使命：</strong>让服装生意更容易<br>
+                <strong>愿景：</strong>成为中国买手店首选的供应链服务平台<br>
+                <strong>价值观：</strong>诚信、专业、共赢
+            </p>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section id="contact" class="services" style="background: #fce4ec;">
+        <h2 class="section-title">联系我们</h2>
+        <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">有任何问题？欢迎随时联系我们！</p>
+            <div style="background: white; padding: 2rem; border-radius: 10px; margin-top: 2rem;">
+                <p><strong>📱 微信/电话：</strong>400-XXX-XXXX（待设置）</p>
+                <p><strong>📧 邮箱：</strong>contact@luozhidie.com（待设置）</p>
+                <p><strong>💬 在线客服：</strong>工作时间 9:00-18:00</p>
+                <div style="margin-top: 2rem;">
+                    <a href="#" class="btn-primary">添加微信咨询</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#features">核心优势</a>
+            <a href="#services">服务项目</a>
+            <a href="#courses">选品课程</a>
+            <a href="#supplier">供应商入驻</a>
+            <a href="#about">关于我们</a>
+        </div>
+        <p>© 2026 骆芷蝶智选 版权所有</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.7;">让服装生意更容易 · 用个性化时尚改变每一个人生活</p>
+    </footer>
+
+    <script>
+        // 表单提交处理
+        function submitForm(event) {
+            event.preventDefault();
+            
+            // 获取表单数据
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // 目前先显示成功提示
+            alert('感谢您的申请！我们将在 1-3 个工作日内审核并联系您。');
+            
+            // 重置表单
+            event.target.reset();
+            
+            return false;
+        }
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
