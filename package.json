@@ -1,0 +1,21 @@
+{
+  "name": "luozhidie-website",
+  "version": "1.0.0",
+  "description": "骆芷蝶智选 - 服装供应链 ToB 服务平台官方网站",
+  "author": "骆芷蝶智选",
+  "license": "MIT",
+  "scripts": {
+    "dev": "npx http-server -p 3000",
+    "build": "echo 'No build step required for static site'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/luozhidie-website.git"
+  },
+  "keywords": [
+    "服装供应链",
+    "ToB 平台",
+    "买手店",
+    "选品"
+  ]
+}
